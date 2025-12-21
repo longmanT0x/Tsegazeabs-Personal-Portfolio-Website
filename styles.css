@@ -188,39 +188,90 @@ body {
     justify-content: center;
     color: var(--text-dark);
     background-color: var(--bg-white);
+    position: relative;
+}
+
+.landing-content-wrapper {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.landing-greeting {
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: var(--text-light);
+    margin-bottom: 0.5rem;
+    animation: fadeInUp 0.8s ease;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
 }
 
 .landing-title {
-    font-size: 3.5rem;
+    font-size: 4.5rem;
     font-weight: 700;
     margin-bottom: 1.5rem;
     color: var(--text-dark);
-    animation: fadeInUp 0.8s ease;
-    line-height: 1.2;
+    animation: fadeInUp 0.8s ease 0.1s both;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
 }
 
-.landing-subtitle {
-    font-size: 1.5rem;
+.landing-tagline {
+    font-size: 1.4rem;
     font-weight: 400;
-    margin-bottom: 1.5rem;
+    margin-bottom: 2rem;
     color: var(--text-dark);
     animation: fadeInUp 0.8s ease 0.2s both;
     line-height: 1.6;
 }
 
+.landing-tagline .highlight {
+    color: var(--primary-color);
+    font-weight: 600;
+    position: relative;
+}
+
 .landing-description {
-    font-size: 1.1rem;
+    font-size: 1.05rem;
     font-weight: 300;
     color: var(--text-light);
-    margin-bottom: 2.5rem;
+    margin-bottom: 2rem;
     line-height: 1.8;
+    animation: fadeInUp 0.8s ease 0.3s both;
+}
+
+.landing-values {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
     animation: fadeInUp 0.8s ease 0.4s both;
+}
+
+.value-tag {
+    display: inline-block;
+    padding: 0.5rem 1.25rem;
+    background-color: var(--bg-card);
+    color: var(--text-dark);
+    border: 1px solid var(--border-color);
+    border-radius: 25px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.value-tag:hover {
+    background-color: var(--primary-color);
+    color: var(--bg-white);
+    border-color: var(--primary-color);
+    transform: translateY(-2px);
 }
 
 .landing-cta {
     display: flex;
     gap: 1.5rem;
-    animation: fadeInUp 0.8s ease 0.6s both;
+    animation: fadeInUp 0.8s ease 0.5s both;
+    flex-wrap: wrap;
 }
 
 .cta-button {
@@ -454,8 +505,8 @@ body {
 
 /* Footer */
 .footer {
-    background-color: var(--text-dark);
-    color: black;
+    background-color: #ffffff;
+    color: #000000;
     text-align: center;
     padding: 2rem 0;
 }
@@ -488,15 +539,23 @@ body {
     }
 
     .landing-introduction {
-        padding: 2rem;
+        padding: 3rem 2rem;
+    }
+
+    .landing-content-wrapper {
+        max-width: 100%;
+    }
+
+    .landing-greeting {
+        font-size: 1rem;
     }
 
     .landing-title {
-        font-size: 2.5rem;
+        font-size: 3rem;
     }
 
-    .landing-subtitle {
-        font-size: 1.25rem;
+    .landing-tagline {
+        font-size: 1.2rem;
     }
 
     .landing-description {
@@ -555,19 +614,28 @@ body {
     }
 
     .landing-introduction {
-        padding: 2rem 1.5rem;
+        padding: 2.5rem 1.5rem;
+    }
+
+    .landing-greeting {
+        font-size: 0.95rem;
     }
 
     .landing-title {
-        font-size: 2rem;
+        font-size: 2.5rem;
     }
 
-    .landing-subtitle {
+    .landing-tagline {
         font-size: 1.1rem;
     }
 
     .landing-description {
         font-size: 0.95rem;
+    }
+
+    .value-tag {
+        font-size: 0.85rem;
+        padding: 0.4rem 1rem;
     }
 
     .contact-links {
