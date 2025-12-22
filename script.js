@@ -54,7 +54,7 @@ const observer = new IntersectionObserver((entries) => {
 }, observerOptions);
 
 // Observe project cards and other elements
-document.querySelectorAll('.project-card, .about-content, .contact-content').forEach(el => {
+document.querySelectorAll('.project-card, .about-content, .contact-content, .program-card, .certification-item').forEach(el => {
     el.style.opacity = '0';
     el.style.transform = 'translateY(20px)';
     el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
@@ -97,5 +97,53 @@ if (carouselImages.length > 0) {
             showImage(currentIndex);
         });
     });
+}
+
+// Horizontal Auto-Scrolling Carousel for Innovation Section
+const contaminationCarousel = document.getElementById('contaminationCarousel');
+if (contaminationCarousel) {
+    const slides = contaminationCarousel.querySelectorAll('.carousel-slide');
+    const totalSlides = slides.length;
+    let currentSlideIndex = 0;
+    const scrollInterval = 4000; // 4 seconds between slides
+    let autoScrollInterval = null;
+
+    function scrollToSlide(index) {
+        const translateX = -index * 100;
+        contaminationCarousel.style.transform = `translateX(${translateX}%)`;
+    }
+
+    function nextSlide() {
+        currentSlideIndex = (currentSlideIndex + 1) % totalSlides;
+        scrollToSlide(currentSlideIndex);
+    }
+
+    function startAutoScroll() {
+        if (autoScrollInterval) {
+            clearInterval(autoScrollInterval);
+        }
+        autoScrollInterval = setInterval(() => {
+            nextSlide();
+        }, scrollInterval);
+    }
+
+    // Initialize: start at first slide
+    scrollToSlide(0);
+    startAutoScroll();
+
+    // Pause on hover, resume on mouse leave
+    const carouselContainer = contaminationCarousel.closest('.horizontal-carousel-container');
+    if (carouselContainer) {
+        carouselContainer.addEventListener('mouseenter', () => {
+            if (autoScrollInterval) {
+                clearInterval(autoScrollInterval);
+                autoScrollInterval = null;
+            }
+        });
+
+        carouselContainer.addEventListener('mouseleave', () => {
+            startAutoScroll();
+        });
+    }
 }
 
