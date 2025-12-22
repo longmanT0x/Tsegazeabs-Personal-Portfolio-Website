@@ -90,6 +90,7 @@ body {
     display: flex;
     list-style: none;
     gap: 2rem;
+    transition: right 0.3s ease-in-out;
 }
 
 .nav-link {
@@ -805,10 +806,11 @@ body {
 @media (max-width: 768px) {
     /* Hamburger Menu Styles */
     .hamburger-menu {
-        display: flex;
+        display: flex !important;
     }
 
     .nav-menu {
+        display: none;
         position: fixed;
         top: 0;
         right: -100%;
@@ -829,7 +831,12 @@ body {
     }
 
     .nav-menu.active {
+        display: flex;
+    }
+
+    .nav-menu.active {
         right: 0;
+        display: flex;
     }
 
     /* Backdrop overlay when menu is open */
