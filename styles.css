@@ -831,12 +831,8 @@ body {
     }
 
     .nav-menu.active {
-        display: flex;
-    }
-
-    .nav-menu.active {
         right: 0;
-        display: flex;
+        display: flex !important;
     }
 
     /* Backdrop overlay when menu is open */
