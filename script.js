@@ -44,17 +44,38 @@ if (hamburgerMenu && navMenu) {
     });
 }
 
-// Smooth scrolling for navigation links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+// Smooth scrolling for navigation links (cross-browser compatible)
+document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
+        var target = document.querySelector(this.getAttribute('href'));
         if (target) {
-            const offsetTop = target.offsetTop - 80; // Account for fixed navbar
-            window.scrollTo({
-                top: offsetTop,
-                behavior: 'smooth'
-            });
+            var offsetTop = target.offsetTop - 80; // Account for fixed navbar
+            // Cross-browser smooth scroll support
+            if ('scrollBehavior' in document.documentElement.style) {
+                window.scrollTo({
+                    top: offsetTop,
+                    behavior: 'smooth'
+                });
+            } else {
+                // Fallback for older browsers
+                var currentPosition = window.pageYOffset;
+                var targetPosition = offsetTop;
+                var distance = targetPosition - currentPosition;
+                var duration = 500;
+                var start = null;
+                
+                function step(timestamp) {
+                    if (!start) start = timestamp;
+                    var progress = timestamp - start;
+                    var percentage = Math.min(progress / duration, 1);
+                    window.scrollTo(0, currentPosition + distance * percentage);
+                    if (progress < duration) {
+                        window.requestAnimationFrame(step);
+                    }
+                }
+                window.requestAnimationFrame(step);
+            }
         }
     });
 });
