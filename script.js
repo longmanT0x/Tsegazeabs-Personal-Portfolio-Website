@@ -1,19 +1,19 @@
-// Hamburger Menu Toggle
-const hamburgerMenu = document.querySelector('.hamburger-menu');
-const navMenu = document.querySelector('.nav-menu');
-const navLinks = document.querySelectorAll('.nav-link');
+// Hamburger Menu Toggle (cross-browser compatible)
+var hamburgerMenu = document.querySelector('.hamburger-menu');
+var navMenu = document.querySelector('.nav-menu');
+var navLinks = document.querySelectorAll('.nav-link');
 
 if (hamburgerMenu && navMenu) {
-    hamburgerMenu.addEventListener('click', () => {
-        const isExpanded = hamburgerMenu.getAttribute('aria-expanded') === 'true';
+    hamburgerMenu.addEventListener('click', function() {
+        var isExpanded = hamburgerMenu.getAttribute('aria-expanded') === 'true';
         hamburgerMenu.setAttribute('aria-expanded', !isExpanded);
         navMenu.classList.toggle('active');
         document.body.style.overflow = isExpanded ? '' : 'hidden';
     });
 
     // Close menu when clicking on a nav link (mobile)
-    navLinks.forEach(link => {
-        link.addEventListener('click', () => {
+    navLinks.forEach(function(link) {
+        link.addEventListener('click', function() {
             if (window.innerWidth <= 768) {
                 hamburgerMenu.setAttribute('aria-expanded', 'false');
                 navMenu.classList.remove('active');
@@ -23,7 +23,7 @@ if (hamburgerMenu && navMenu) {
     });
 
     // Close menu when clicking outside (mobile)
-    document.addEventListener('click', (e) => {
+    document.addEventListener('click', function(e) {
         if (window.innerWidth <= 768 && 
             !navMenu.contains(e.target) && 
             !hamburgerMenu.contains(e.target) &&
@@ -35,7 +35,7 @@ if (hamburgerMenu && navMenu) {
     });
 
     // Handle window resize
-    window.addEventListener('resize', () => {
+    window.addEventListener('resize', function() {
         if (window.innerWidth > 768) {
             hamburgerMenu.setAttribute('aria-expanded', 'false');
             navMenu.classList.remove('active');
@@ -80,9 +80,9 @@ document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
     });
 });
 
-// Active navigation link highlighting
-const sections = document.querySelectorAll('section[id]');
-const navLinks = document.querySelectorAll('.nav-link');
+// Active navigation link highlighting (cross-browser compatible)
+var sections = document.querySelectorAll('section[id]');
+var navLinks = document.querySelectorAll('.nav-link');
 
 function highlightActiveSection() {
     const scrollY = window.pageYOffset;
